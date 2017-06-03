@@ -149,8 +149,26 @@ exports.projects = {
         });
       });
     });
+  },
+
+  updateProjects: (req, res) => {
+    let updatedProject = {};
+    helper.updateProject(req.body.projectId, req.body.projectChanges, (project) => {
+      updatedProject['project_info'] = project;
+      console.log(updatedProject['project_info'], 'project');
+      helper.retrieveTeamById(project['team_id'], (team) => {
+        updatedProject['team_info'] = team;
+        console.log(updatedProject['team_info'], 'team');
+        helper.retrieveTeamUsers(team[0].dataValues.id, (users) => {
+          updatedProject['user_info'] = users;
+          res.send(updatedProject);
+        });
+      });
+    });
   }
 };
+
+
 
 exports.phases = {
   retrievePhasesByProjectId: (req, res) => {

@@ -144,9 +144,19 @@ exports.addProject = (body, callback) => {
   });
 };
 
-// exports.updateProject = () => {
-
-// }
+exports.updateProject = (project_id, project_change, callback) => {
+  for(var key in project_change) {
+    console.log(key, 'key');
+    models.Projects.update({
+      [key]: project_change[key]
+    }, {
+      where: {
+        id: project_id
+      }
+    });
+  }
+  this.retrieveProjectById({project_id: project_id}, callback);
+};
 
 // exports.deleteProject = () => {
 

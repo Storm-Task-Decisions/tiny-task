@@ -108,11 +108,11 @@ Response Example:
     "project_name": "Tremendous Task",
     "complete": false
   },
-  "team_info": { 
+  "team_info": {
     "id": 1,
     "team_name": "Storm Taskers"
   },
-  "users_on_project": [
+  "user_info": [
     {
       "id": 1,
       "full_name": "Kevin Nguyen",
@@ -146,11 +146,11 @@ Response Example:
     "project_name": "Tremendous Task",
     "complete": "false"
   },
-  "team_info": { 
+  "team_info": {
     "id": 1,
     "team_name": "Storm Taskers"
   },
-  "users_on_project": [
+  "user_info": [
     {
       "id": 1,
       "full_name": "Kevin Nguyen",
@@ -168,7 +168,7 @@ Update Project Info
 Properties you can update:
   projectName,
   complete
- 
+
 Request Example:
 ```JSON
   {
@@ -189,11 +189,11 @@ Response Example:
     "project_name": "Tremendous Task",
     "complete": "false"
   },
-  "team_info": { 
+  "team_info": {
     "id": "1",
     "team_name": "Storm Taskers"
   },
-  "users_on_project": [
+  "user_info": [
     {
       "id": 1,
       "full_name": "Kevin Nguyen",
@@ -207,7 +207,7 @@ Response Example:
 
 * ### `DELETE /api/project/:project_id`
 Gets Project Info
- 
+
 Request Example:
 ```JSON
 {
