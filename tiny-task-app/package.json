@@ -2,10 +2,10 @@
   "name": "tiny-task-app",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": { "node": "6.10.2", "npm": "3.10.10" },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,11 +27,11 @@
     "core-js": "^2.4.1",
     "ng2-dnd": "^4.1.0",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "@angular/cli": "1.0.4",
+    "@angular/compiler-cli": "^4.0.0"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.4",
-    "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",

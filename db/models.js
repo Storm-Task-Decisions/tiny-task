@@ -1,8 +1,15 @@
 const Sequelize = require("sequelize");
 
-const connection = new Sequelize("tiny_task", "root", "", {
-  logging: false
-});
+let connection;
+  if (process.env.DATABASE_URL) {
+    connection = new Sequelize(process.env.DATABASE_URL, {
+      dialect:  'postgres',
+      protocol: 'postgres',
+      logging:  false
+    });
+  } else {
+    connection = new Sequelize("tiny_task", "root", "");
+  }
 
 const Users = connection.define("users", {
   auth_token: {

@@ -11,7 +11,7 @@ import { NavService } from '../services/nav-service/nav.service';
 })
 
 export class ProjectsComponent implements OnInit {
-  private value: any;
+  private value: any = 'all';
 
   constructor(
     private projectsService: ProjectsService,

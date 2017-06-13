@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Project Manager web app to turn large tasks into small tasks",
   "main": "server.js",
+  "engines": { "node": "6.10.2", "npm": "3.10.10" },
   "scripts": {
+    "preinstall": "npm install --prefix tiny-task-app",
     "test": "mocha spec/server-database.js -w",
-    "start": "nodemon",
+    "start": "node server.js",
     "seed": "node seed.js"
   },
   "repository": {
@@ -28,10 +30,30 @@
     "express": "^4.15.3",
     "mocha": "^3.4.2",
     "mysql": "^2.13.0",
+    "nodemon": "^1.11.0",
+    "pg": "^6.2.4",
     "request": "^2.81.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "@angular/animations": "^4.1.3",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/material": "^2.0.0-beta.6",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "@qontu/ngx-inline-editor": "^0.2.0-alpha.0",
+    "auth0-js": "^8.7.0",
+    "core-js": "^2.4.1",
+    "ng2-dnd": "^4.1.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4",
+    "@angular/cli": "1.0.4",
+    "@angular/compiler-cli": "^4.0.0"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.6"
+    "nodemon": "^1.11.0"
   }
 }
