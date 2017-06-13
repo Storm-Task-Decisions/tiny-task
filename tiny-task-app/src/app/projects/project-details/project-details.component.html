@@ -35,9 +35,9 @@
 <hr/>
 <div class="container-phases" >
 <!--Implement ngFor to create Phases-->
-  <div class="phases" dnd-sortable-container [sortableData]="projectsService.phases">
+  <div class="phases" dnd-sortable-container [sortableData]="projectsService.phases" [dropZones]="['phase-dropZone']">
     <div *ngFor="let phase of projectsService.phases; let i = index" dnd-sortable [sortableIndex]="i"
-      (onDropSuccess)="updatePhaseOrder()" [dragEnabled]="dragOperation">
+      (onDropSuccess)="updatePhaseOrder()" [dragEnabled]="dragOperation" >
       <phases
         [phase]="phase"
         [(dragOperation)]="dragOperation"

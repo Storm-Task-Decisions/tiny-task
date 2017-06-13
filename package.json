@@ -7,7 +7,7 @@
   "scripts": {
     "preinstall": "npm install --prefix tiny-task-app",
     "test": "mocha spec/server-database.js -w",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "seed": "node seed.js"
   },
   "repository": {
@@ -45,7 +45,6 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@qontu/ngx-inline-editor": "^0.2.0-alpha.0",
-    "auth0-js": "^8.7.0",
     "core-js": "^2.4.1",
     "ng2-dnd": "^4.1.0",
     "rxjs": "^5.1.0",

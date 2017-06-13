@@ -14,6 +14,7 @@ export class AuthService {
     audience: 'https://tinytask.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/callback',
     scope: 'openid profile',
+    leeway: 30
   });
 
   userProfile: any;
@@ -38,17 +39,17 @@ export class AuthService {
     });
   }
 
-    public getProfile(cb): void {
-      const accessToken = localStorage.getItem('access_token');
-      if (!accessToken) {
-        throw new Error('Access token must exist to fetch profile');
+  public getProfile(cb): void {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('Access token must exist to fetch profile');
+    }
+    const self = this;
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        self.userProfile = profile;
       }
-      const self = this;
-      this.auth0.client.userInfo(accessToken, (err, profile) => {
-        if (profile) {
-          self.userProfile = profile;
-        }
-        cb(err, profile);
+      cb(err, profile);
     });
   }
 

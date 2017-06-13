@@ -23,29 +23,41 @@
   align-items: center;
 }
 
+.task-dropzone {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 10px;
+  background-color: hsla(2, 60%, 50%, .5);
+  border-radius: 3px;
+  padding: 7px;
+}
+
 .task {
   background-color: white;
   color: #00bcd4;
   border-radius: 2px;
+  margin: 3px;
   min-width: 220px;
   max-width: 300px;
   height: auto;
   padding: 7px;
-  margin-bottom: 7px;
   box-shadow: 0px 2px 2px #888888;
 }
 
 .task-completed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   color: darkgrey;
   border-radius: 2px;
+  margin: 3px;
   min-width: 220px;
   max-width: 300px;
   height: auto;
   padding: 7px;
-  margin-bottom: 7px;
   opacity: .5;
-  text-decoration: line-through;
   box-shadow: 0px 2px 2px #888888;
 }
 

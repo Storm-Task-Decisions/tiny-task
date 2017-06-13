@@ -8,7 +8,9 @@ let connection;
       logging:  false
     });
   } else {
-    connection = new Sequelize("tiny_task", "root", "");
+    connection = new Sequelize("tiny_task", "root", "", {
+      logging:  false
+    });
   }
 
 const Users = connection.define("users", {
