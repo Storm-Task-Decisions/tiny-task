@@ -8,12 +8,7 @@
     "preinstall": "npm install --prefix tiny-task-app",
     "test": "mocha spec/server-database.js -w",
     "start": "node server.js",
-<<<<<<< HEAD
     "seed": "node seed.js"
-=======
-    "seed": "node seed.js",
-    "postinstall": "ng build --aot -prod"
->>>>>>> Modified files for Heroku (Phase 3)
   },
   "repository": {
     "type": "git",
