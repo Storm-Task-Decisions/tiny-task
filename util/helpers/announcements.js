@@ -24,8 +24,6 @@ exports.getAnnouncementsByTeamId = (params, callback) => {
 };
 
 exports.updateAnnouncement = (announcementId, change, callback) => {
-  console.log(announcementId, 'id inside database');
-  console.log(change, 'body inside database');
   models.Announcements.findOne({
       where: {
         id: announcementId
@@ -35,7 +33,6 @@ exports.updateAnnouncement = (announcementId, change, callback) => {
         announcement: change
       })
         .then(announcement => {
-          console.log(announcement.dataValues, 'in helperfunctions 2222222');
           callback(null, announcement.dataValues);
         }).catch(err => {
           callback(err, null);

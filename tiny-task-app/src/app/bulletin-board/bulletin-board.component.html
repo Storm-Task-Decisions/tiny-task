@@ -14,11 +14,10 @@
     *ngFor="let announcement of bulletinBoardService.announcements"
     class="announcement">
     <div class="eachAnnouncement">
-      <td contenteditable="true" [textContent]="announcement.announcement" (input)="editAnnouncement($event.target.textContent, announcement.id)">{{ announcement.announcement }} </td>
-<!--       <div
-        *ngFor="let user of bulletinBoardService.announcements.user_info">
-        <div>{{ user.full_name }}</div>
-      </div> -->
+      <td contenteditable="true" [textContent]="announcement.announcement" (input)="editAnnouncement($event.target.textContent, announcement.id)">{{ announcement.announcement }}</td>
+      <div>
+      <td>{{ announcement.userName }}</td>
+      </div>
       <button md-icon-button (click)="deleteAnnouncement(announcement.id, announcement.announcement); $event.stopPropagation()" >
         <i class="material-icons">delete</i>
       </button>

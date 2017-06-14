@@ -1,9 +1,24 @@
 const announcementHelper = require('../helpers/announcements.js');
+const userHelper = require('../helpers/users.js');
 
 exports.announcements = {
   retrieveAnnouncements: (req, res) => {
-    announcementHelper.getAnnouncementsByTeamId(req.params, announcements => {
-      res.send(announcements);
+    let announcementData = {};
+    announcementHelper.getAnnouncementsByTeamId(req.params, (announcements) => {
+      announcementData.announcements = announcements;
+      Promise.all(announcements.map(announcement => {
+        return new Promise((resolve, reject) => {
+          userHelper.retrieveProfile(announcement.user_id, (userProfile) => {
+            resolve(userProfile);
+          });
+        });
+      })).then((results) => {
+        announcementData.announcements.forEach((announcement, index) => {
+          announcementData.announcements[index].dataValues.userName = results[index].full_name;
+        });
+      }).then(() => {
+        res.send(announcementData);
+      });
     });
   },
   createNewAnnouncements: (req, res, isSeed) => {
@@ -20,12 +35,10 @@ exports.announcements = {
     });
   },
   updateAnnouncements: (req, res) => {
-    console.log(req.body.announcementChanges.announcement, 'inside requesthandler');
     announcementHelper.updateAnnouncement(req.params.announcement_id, req.body.announcementChanges.announcement, (err, result) => {
       if (err) {
         return res.status(500).send("server error");
       } else {
-        console.log(result, 'should be updated result');
         res.status(200).send(result);
         res.end();
       }

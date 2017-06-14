@@ -28,7 +28,7 @@ export class BulletinBoardService {
     this.http.get(`${this.baseUrl}/api/announcements/${teamId}`)
       .toPromise()
       .then( (response) => {
-        this.announcements = response.json();
+        this.announcements = response.json().announcements;
       })
       .catch(this.handleError);
   }
@@ -49,8 +49,6 @@ export class BulletinBoardService {
 
   // Edit Information
   editAnnouncement(announcementId: number, announcement: string): void {
-    console.log(announcementId, 'id inside service');
-    console.log(announcement, 'announcement inside service');
     this.http.put(
       `${this.baseUrl}/api/announcements/${announcementId}`,
       JSON.stringify({announcementId: announcementId, announcementChanges: {announcement: announcement}}),

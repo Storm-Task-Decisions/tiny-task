@@ -4,12 +4,9 @@ const helperTeams = require("../helpers/teams.js");
 const helperTasks = require("../helpers/tasks.js");
 
 exports.extractProjectId = (teams, callback) => {
-  Promise.all(
-    teams.map(team => {
+  Promise.all(teams.map(team => {
       return new Promise((resolve, reject) => {
-        helperProjects.retrieveProjectByTeamId(
-          team.dataValues.team_id,
-          project => {
+        helperProjects.retrieveProjectByTeamId(team.dataValues.team_id, (project) => {
             resolve(project);
           }
         );
