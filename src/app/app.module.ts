@@ -44,6 +44,8 @@ import { TeamsComponent } from './teams/teams.component';
 import { TeamDetailsComponent } from './teams/team-details/team-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DndModule } from 'ng2-dnd';
+import { AssignUserTaskComponent } from './task-dialogs/assign-user-task/assign-user-task.component';
+import { AssignTaskWeightComponent } from './task-dialogs/assign-task-weight/assign-task-weight.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { DndModule } from 'ng2-dnd';
     PageNotFoundComponent,
     Auth0Component,
     BulletinBoardComponent,
-    SharedResourceComponent
+    SharedResourceComponent,
+    AssignUserTaskComponent,
+    AssignTaskWeightComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,7 @@ import { DndModule } from 'ng2-dnd';
     RouterModule.forRoot(ROUTES, { useHash: true }),
     DndModule.forRoot()
   ],
+  entryComponents: [AssignUserTaskComponent, AssignTaskWeightComponent],
   providers: [UserService, ProjectsService, NavService, TeamService, AuthService, BulletinBoardService, DragService, SharedResourceService],
   bootstrap: [AppComponent]
 })

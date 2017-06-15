@@ -1,4 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MdDialog } from '@angular/material';
+
+import { AssignUserTaskComponent } from '../../../task-dialogs/assign-user-task/assign-user-task.component';
+import { AssignTaskWeightComponent } from '../../../task-dialogs/assign-task-weight/assign-task-weight.component';
 
 import { ProjectsService } from '../../../services/projects-service/projects.service';
 
@@ -26,7 +30,6 @@ export class PhasesComponent implements OnInit {
       this.taskDrag = true;
       this.dragOperation = false;
       this.taskEditingChange.emit(!this.taskEditing);
-      //console.log("enable task drag:", this.taskEditing, this.taskDrag, this.dragOperation)
     }
     this.taskEditingChange.emit(this.taskEditing);
     this.dragOperationChange.emit(this.dragOperation);
@@ -37,19 +40,52 @@ export class PhasesComponent implements OnInit {
       this.taskDrag = false;
       this.dragOperation = true;
       this.taskEditingChange.emit(!this.taskEditing);
-      //console.log("enable phase drag:", this.taskEditing, this.taskDrag, this.dragOperation)
     }
 
     this.taskEditingChange.emit(this.taskEditing);
     this.dragOperationChange.emit(this.dragOperation);
   }
 
-  constructor(private projectsService: ProjectsService) { }
+  constructor(
+    private projectsService: ProjectsService,
+    private dialog: MdDialog
+  ) { }
 
   ngOnInit() {
     this.projectsService.getTasks(this.phase.id).then((result: any) => {
       this.phaseTasks = result.task_info;
     });
+  }
+
+  openAssignUsers(taskId: number): void {
+    let results = {};
+    this.projectsService.usersOnProject.forEach((user) => {
+      results[user.id] = false;
+    });
+
+    this.projectsService.getUsersOnTask(taskId)
+      .then(users => {
+        users.forEach((user) => {
+          results[user.user_id] = true;
+        });
+
+        let userTaskDialog = this.dialog.open(AssignUserTaskComponent, {
+          data: Object.assign({}, results)
+        });
+
+        userTaskDialog.afterClosed().subscribe(changes => {
+          for ( let id in changes ) {
+            if ( results[id] !== changes[id] ) {
+              if ( changes[id] ) {
+                // Add to task
+                this.projectsService.assignToTask(+id, taskId, this.projectsService.currentProject.team_id);
+              } else {
+                this.projectsService.removeUserFromTask(+id, taskId);
+              }
+            }
+          }
+        });
+      });
   }
 
   editPhaseName(phaseId: number, newName: string): void {
@@ -83,14 +119,11 @@ export class PhasesComponent implements OnInit {
   }
 
   updateTaskPhaseId(event: any, taskId: number): void {
-    // console.log(event.target.parentElement.parentElement.getAttribute("data-phase"));
-
     let current = event.target;
     while(!current.getAttribute("data-phase")) {
       current = current.parentElement;
     }
     let phaseId = parseInt(current.getAttribute("data-phase"), 10);
-    // console.log(phaseId);
     this.projectsService.updateTaskPhaseId(taskId, phaseId);
   }
 

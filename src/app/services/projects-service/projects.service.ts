@@ -70,8 +70,16 @@ export class ProjectsService {
 
                 this.totalWeight += task.task_weight;
                 this.progress = Math.floor((this.completeWeight / this.totalWeight) * 100);
-                console.log(this.progress);
               });
+              return response.json();
+            })
+            .catch(this.handleError);
+  }
+
+  getUsersOnTask(taskId: number): Promise<any> {
+    return this.http.get(`${this.baseUrl}/api/tasks/users/${taskId}`)
+            .toPromise()
+            .then(response => {
               return response.json();
             })
             .catch(this.handleError);
@@ -211,9 +219,7 @@ export class ProjectsService {
       JSON.stringify({user_id: userId, team_id: teamId, project_id: this.currentProject.id}),
       {headers: this.headers})
       .toPromise()
-      .then((response) => {
-        response.json();
-      })
+      .then()
       .catch(this.handleError);
   }
 
@@ -300,8 +306,7 @@ export class ProjectsService {
     this.http.delete(
       `${this.baseUrl}/api/tasks/users/${userId}/${taskId}`)
       .toPromise()
-      .then( (response) => {
-      })
+      .then()
       .catch(this.handleError);
   }
 }

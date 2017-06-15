@@ -28,32 +28,11 @@ exports.tasks = {
     });
   },
 
-  // retrieveTasksByPhaseId: (req, res) => {
-  //   let taskData = {};
-  //   helper.retrieveTasksByPhaseId(req.params, (taskObj) => {
-  //     return new Promise ((resolve, reject) => {
-  //       taskData.task_info = taskObj;
-  //       for(let i = 0; i < taskObj.length; i++) {
-  //         console.log(taskObj[i], i, 'should be each');
-  //       taskData.task_info.taskObj[i].userProfiles = [];
-  //         helper.retrieveTaskUser(taskObj[i].id, (users) => {
-  //           if(users[0].dataValues.length !== 0) {
-  //             for(let key in users) {
-  //               helper.retrieveUser(users[key].dataValues.user_id, (userProfile) => {
-  //                 taskObj[i].userProfiles.push(userProfile);
-  //               })
-  //             }
-  //           }
-  //         })
-  //       }
-  //       resolve(taskObj);
-  //     }).then((taskObj) => {
-  //       //taskData.task_info = taskObj;
-  //     }).then((taskData) => {
-  //       res.send(taskData);
-  //     })
-  //   })
-  // },
+  retrieveTaskUsers: (req, res) => {
+    helper.retrieveTaskUser(req.params.task_id, users => {
+      res.send(users);
+    })
+  },
 
   updateTasks: (req, res, isSeed) => {
     let updatedTask = {

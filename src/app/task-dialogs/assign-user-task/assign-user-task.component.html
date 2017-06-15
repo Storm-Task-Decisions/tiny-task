@@ -1,0 +1,20 @@
+<div class="task-dialog">
+  <h2 md-dialog-title>Change Task Assignment</h2>
+  <div *ngFor="let user of projectsService.usersOnProject">
+    <div class="user-option">
+      <div *ngIf="results[user.id] === true; else unassigned">O</div>
+      <div>
+        <md-dialog-content class="names disable-select" (click)="changeResults(user.id)">{{ user.full_name }}</md-dialog-content>
+      </div>
+    </div>
+  </div>
+
+  <md-dialog-actions>
+    <button md-button [md-dialog-close]="results">Save</button>
+    <button md-button md-dialog-close>Discard Changes</button>
+  </md-dialog-actions>
+</div>
+
+<ng-template #unassigned>
+  <div>X</div>
+</ng-template>
