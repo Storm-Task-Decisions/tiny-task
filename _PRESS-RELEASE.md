@@ -1,5 +1,5 @@
 # Tiny Task #
- 
+
 ## Ideal Users ##
   > Project management for small teams!
 
@@ -12,10 +12,10 @@
   > "We created Tiny Task to help keep teams informed of each other's progress. We hope it helps you create your next ideal project, effectively!" - Kevin Nguyen, Product Owner
 
 ## How to Get Started ##
-  > Create an account on Tiny Task and you are all set you go! Make a team, invite your group members, and start a project: It is that easy! 
+  > Create an account on Tiny Task and you are all set you go! Make a team, invite your group members, and start a project: It is that easy!
 
 ## Customer Quote ##
   > "Tiny Task changed the way my team communicated! Knowing what each of my teammates were working on avoided unnecessary logistics." - Beth Stevic
 
 ## What are you waiting for? ##
-  > Visit www.tinytask.com for more information, and get started today!
+  > Visit www.tinytask.herokuapp.com for more information, and get started today!
