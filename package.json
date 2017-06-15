@@ -1,8 +1,7 @@
 {
-  "name": "tiny-task",
-  "version": "1.0.0",
-  "description": "Project Manager web app to turn large tasks into small tasks",
-  "main": "server.js",
+  "name": "tiny-task-app",
+  "version": "0.0.0",
+  "license": "MIT",
   "engines": { "node": "6.10.2", "npm": "3.10.10" },
   "scripts": {
     "test": "mocha spec/server-database.js -w",
@@ -15,16 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bethstevic/tiny-task.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bethstevic/tiny-task/issues"
-  },
-  "homepage": "https://github.com/bethstevic/tiny-task#readme",
+  "private": true,
   "dependencies": {
     "auth0-js": "^8.7.0",
     "bluebird": "^3.5.0",
@@ -49,6 +39,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@qontu/ngx-inline-editor": "^0.2.0-alpha.0",
+    "auth0-js": "^8.7.0",
     "core-js": "^2.4.1",
     "ng2-dnd": "^4.1.0",
     "rxjs": "^5.1.0",

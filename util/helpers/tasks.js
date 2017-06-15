@@ -94,7 +94,7 @@ exports.addTask = (body, phase_id, callback) => {
       task_name: body.task_name,
       task_color: body.task_color,
       complete: body.complete || false,
-      stage: body.stage || 'Not Started',
+      stage: body.stage || "not started",
       phase_id: phase_id
     })
     .then(result => {

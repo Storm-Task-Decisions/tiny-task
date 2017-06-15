@@ -1,3 +1,3 @@
 <div class="task">
-  <inline-editor type="text" [(ngModel)]="task.task_name" (onSave)="editTaskName(task.id, $event); enablePhaseDrag()"  (onEdit)="disableAllDrag()" (onCancel)="enablePhaseDrag()" name="task.task_name" size="15" min="1" max="144" (onError)="handleError()" placeholder="Task Name"></inline-editor>
+  <inline-editor type="text" [(ngModel)]="task.task_name" (onSave)="editTaskName(task.id, $event)" name="task.task_name" size="15" min="1" max="144" (onError)="handleError()" placeholder="Task Name"></inline-editor>
 </div>

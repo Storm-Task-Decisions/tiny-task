@@ -34,15 +34,20 @@ router.delete(
 );
 
 //////////PROJECTS/////////////////
-router.get("/projects/:project_id", handlerProjects.projects.retrieveProjectById
+router.get(
+  "/projects/:project_id",
+  handlerProjects.projects.retrieveProjectById
 );
 router.post("/projects", handlerProjects.projects.createNewProjects);
 router.put("/projects/:project_id", handlerProjects.projects.updateProjects);
-router.put("/projects/phases/:project_id", handlerProjects.projects.updatePhaseOrder
+router.put(
+  "/projects/phases/:project_id",
+  handlerProjects.projects.updatePhaseOrder
 );
 router.delete("/projects/:project_id", handlerProjects.projects.deleteProjects);
 router.get(
-  "/projects/teams/:team_id", handlerProjects.projects.retrieveProjectsByTeam
+  "/projects/teams/:team_id",
+  handlerProjects.projects.retrieveProjectsByTeam
 );
 router.get("/projects/user/:user_id", handlerUsers.users.retrieveProjectIds);
 router.get("/projects/teams/:team_id/users/:user_id", handlerProjects.projects.retrieveProjectAndTasks);
@@ -62,7 +67,10 @@ router.delete(
   "/tasks/users/:user_id/:task_id",
   handlerUsers.users.deleteTaskUsers
 );
-router.get("/tasks/:project_id/users/:user_id", handlerTasks.tasks.retrieveUserTasks);
+router.get(
+  "/tasks/:project_id/users/:user_id",
+  handlerTasks.tasks.retrieveUserTasks
+);
 
 ////////ANNOUNCEMENTS/////////////////
 router.get("/announcements/:team_id", handlerAnnouncements.announcements.retrieveAnnouncements);
@@ -70,15 +78,21 @@ router.post("/announcements",handlerAnnouncements.announcements.createNewAnnounc
 router.put("/announcements/:announcement_id", handlerAnnouncements.announcements.updateAnnouncements);
 router.delete("/announcements/:announcement_id", handlerAnnouncements.announcements.deleteAnnouncements);
 
+////////RESOURCES/////////////////
+router.get("/resources/:team_id", handlerResources.resources.retrieveResources);
+router.post("/resources", handlerResources.resources.createNewResources);
+router.put(
+  "/resources/:resources_id",
+  handlerResources.resources.updateResources
+);
+router.delete(
+  "/resources/:resources_id",
+  handlerResources.resources.deleteResources
+);
+
 //////////MESSAGES/////////////////
 // router.get('/api/messages', handlerMessages.messages.retrieveMessages);
 // router.post('/api/messages', handlerMessages.messages.createNewMessages);
 // router.delete('/api/messages', handlerMessages.messages.deleteMessages);
-
-//////////RESOURCES/////////////////
-// router.get('/resources', handlerResources.resources.retrieveResources);
-// router.post('/resources', handlerResources.resources.createNewResources);
-// router.put('/resources', handlerResources.resources.updateResources);
-// router.delete('/resources', handlerResources.resources.deleteResources);
 
 module.exports = router;

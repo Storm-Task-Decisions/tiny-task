@@ -1,40 +1,39 @@
-const helper = require('../helpers/resources.js');
+const helper = require("../helpers/resources.js");
 
-// exports.resources = {
-//   retrieveResources: (req, res) => {
-//     helper.retrieveResource(req, () => {
-//       res.end(JSON.stringify(res.body));
-//     })
-//       .then((resource) => {
-//         res.status(200).send('resource retrieved');
-//       })
-//       .catch((err) => {
-//         res.status(404).send(err, 'error retrieving resource');
-//       });
-//   },
-//   createNewResources: (req, res) => {
-//     helper.addResource(req.body, () => {
-//       res.end(JSON.stringify(res.body));
-//     })
-//       .then((resource) => {
-//         res.status(200).send('resource added');
-//       })
-//       .catch((err) => {
-//         res.status(404).send(err, 'error on creating resource');
-//       });
-//   },
-//   updateResources: (req, res) => {
-//     helper.updateResource(req.body, () => {
-//       res.end(JSON.stringify(res.body));
-//     })
-//       .then((resource) => {
-//         res.status(200).send('resource updated');
-//       })
-//       .catch((err) => {
-//         res.status(404).send(err, 'error on updating resource');
-//       });
-//   },
-//   deleteResources: (req, res) => {
+exports.resources = {
+  retrieveResources: (req, res) => {
+    helper.getResourcesByTeamId(req.params, resources => {
+      res.send(resources);
+    });
+  },
 
-//   }
-// };
+  createNewResources: (req, res, isSeed) => {
+    helper.addResource(req, result => {
+      if (typeof isSeed === "function") {
+        res.status(200).send(result);
+        res.end();
+      } else {
+        console.log("seed resource added");
+        res.end();
+      }
+    });
+  },
+
+  updateResources: (req, res) => {
+    helper.updateResource(req, (err, result) => {
+      if (err) {
+        return res.status(500).send("server error");
+      } else {
+        console.log("seed announcement updated");
+        res.status(200).send(result);
+        res.end();
+      }
+    });
+  },
+
+  deleteResources: (req, res) => {
+    helper.deleteResource(req.params, message => {
+      res.status(200).send(message);
+    });
+  }
+};

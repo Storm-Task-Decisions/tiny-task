@@ -505,11 +505,12 @@ const seedData = [
     );
   },
 
-() => {
+  () => {
     return handlerAnnouncements.announcements.createNewAnnouncements(
       {
         body: {
-          announcement: "Check out the new Angular documents posted in the resources",
+          announcement:
+            "Check out the new Angular documents posted in the resources",
           user_id: 2,
           team_id: 1
         }
@@ -522,7 +523,6 @@ const seedData = [
       true
     );
   },
-
 
   () => {
     return handlerAnnouncements.announcements.createNewAnnouncements(
@@ -558,8 +558,64 @@ const seedData = [
       },
       true
     );
-  }
+  },
 
+  () => {
+    return handlerResources.resources.createNewResources(
+      {
+        body: {
+          URL: "www.google.com",
+          notes: "best website ever, must see!!",
+          user_id: 1,
+          team_id: 1
+        }
+      },
+      {
+        end: () => {
+          console.log("seed resources added");
+        }
+      },
+      true
+    );
+  },
+
+  () => {
+    return handlerResources.resources.createNewResources(
+      {
+        body: {
+          URL: "www.facebook.com",
+          notes: "great site to help you get some friends",
+          user_id: 2,
+          team_id: 1
+        }
+      },
+      {
+        end: () => {
+          console.log("seed resources added");
+        }
+      },
+      true
+    );
+  },
+
+  () => {
+    return handlerResources.resources.createNewResources(
+      {
+        body: {
+          URL: "www.yahoo.com",
+          notes: "nobody uses this anymore",
+          user_id: 3,
+          team_id: 1
+        }
+      },
+      {
+        end: () => {
+          console.log("seed resources added");
+        }
+      },
+      true
+    );
+  }
 ];
 
 const seed = () => {

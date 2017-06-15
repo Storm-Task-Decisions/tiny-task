@@ -1,17 +1,17 @@
 const Sequelize = require("sequelize");
 
 let connection;
-  if (process.env.DATABASE_URL) {
-    connection = new Sequelize(process.env.DATABASE_URL, {
-      dialect:  'postgres',
-      protocol: 'postgres',
-      logging:  false
-    });
-  } else {
-    connection = new Sequelize("tiny_task", "root", "", {
-      logging:  false
-    });
-  }
+if (process.env.DATABASE_URL) {
+  connection = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres",
+    protocol: "postgres",
+    logging: false
+  });
+} else {
+  connection = new Sequelize("tiny_task", "root", "", {
+    logging: false
+  });
+}
 
 const Users = connection.define("users", {
   auth_token: {
@@ -95,8 +95,7 @@ Tasks.belongsTo(Phases, {
   onDelete: "CASCADE"
 });
 
-const User_Tasks = connection.define("user_tasks", {
-});
+const User_Tasks = connection.define("user_tasks", {});
 
 Tasks.hasMany(User_Tasks, {
   foreignKey: { name: "task_id", targetKey: "id" },
@@ -113,7 +112,7 @@ Teams.hasMany(User_Tasks, {
 });
 
 Projects.hasMany(User_Tasks, {
-  foreignKey: { name: "project_id", targetKey: "id"},
+  foreignKey: { name: "project_id", targetKey: "id" },
   onDelete: "CASCADE"
 });
 
@@ -142,11 +141,12 @@ Teams.hasMany(Announcements, {
 });
 
 const Shared_Resources = connection.define("shared_resources", {
-  resource: { type: Sequelize.STRING, allowNull: false },
-  type: { type: Sequelize.STRING, allowNull: false }
+  URL: { type: Sequelize.STRING },
+  notes: { type: Sequelize.TEXT }
+  // type: { type: Sequelize.STRING, allowNull: false }
 });
-Users.hasMany(Shared_Resources, {
-  foreignKey: { name: "user_id", targetKey: "auth_token" },
+User_Profile.hasMany(Shared_Resources, {
+  foreignKey: { name: "user_id", targetKey: "id" },
   onDelete: "CASCADE"
 });
 Teams.hasMany(Shared_Resources, {

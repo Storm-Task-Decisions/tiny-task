@@ -1,8 +1,8 @@
 export class Resource {
   id: number;
-  user_id: string;
+  user_id: number;
   team_id: number;
-  resource: string;
+  URL: string;
   notes: string;
   createdAt: string;
   updatedAt: string;
