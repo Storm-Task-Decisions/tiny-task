@@ -25,9 +25,8 @@ const seedData = [
       {
         body: {
           auth_token: "facebook|10107514427025035",
-          full_name: "Kevin Nguyen",
-          email: "kevinN@tinytask.com",
-          user_color: "blue",
+          name: "Kevin Nguyen",
+          nickname: "kevinN@tinytask.com",
           user_status: "Adding Styling",
           user_availability: "false"
         }
@@ -45,9 +44,8 @@ const seedData = [
       {
         body: {
           auth_token: "google-oauth2|108664476940118181583",
-          full_name: "Brian Leung",
-          email: "brianl@tinytask.com",
-          user_color: "black",
+          name: "Brian Leung",
+          nickname: "brianl@tinytask.com",
           user_status: "Building out user profiles",
           user_availability: "false"
         }
@@ -65,9 +63,8 @@ const seedData = [
       {
         body: {
           auth_token: "google-oauth2|109498890375366459761",
-          full_name: "David Hsiao",
-          email: "davidh@tinytask.com",
-          user_color: "yellow",
+          name: "David Hsiao",
+          nickname: "davidh@tinytask.com",
           user_status: "Connecting apis",
           user_availability: "true"
         }
@@ -85,9 +82,8 @@ const seedData = [
       {
         body: {
           auth_token: "google-oauth2|100506042269516154610",
-          full_name: "Beth Stevic",
-          email: "beths@tinytask.com",
-          user_color: "green",
+          name: "Beth Stevic",
+          nickname: "beths@tinytask.com",
           user_status: "Debugging deployment",
           user_availability: "true"
         }

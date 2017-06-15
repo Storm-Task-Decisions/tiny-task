@@ -65,6 +65,7 @@ exports.users = {
   },
 
   retrieveProfile: (req, res) => {
+    console.log(req.params);
     helperUsers.retrieveProfile(req.params.user_id, user_profile => {
       res.send(user_profile);
     })
@@ -79,7 +80,7 @@ exports.users = {
       } else {
         res.send([]);
       }
-    })
+    });
   },
 
   searchUser: (req, res) => {
@@ -92,7 +93,7 @@ exports.users = {
   createNewUser: (req, res, isSeed) => {
     helperUsers.addUserProfile(req.body, user_profile => {
       const id = user_profile.id;
-      helperUsers.addUsers(req.body, id, (err, result) => {
+      helperUsers.addUsers(req.body.auth_token, id, (err, result) => {
         if (err) {
           return res.status(500).send("server error");
         } else if (typeof isSeed === "function") {
@@ -148,17 +149,13 @@ exports.users = {
   // },
 
   deleteTeamUsers: (req, res) => {
-    helperUsers.deleteTeamUser(
+    helperTeams.deleteTeamUser(
       req.params.user_id,
       req.params.team_id,
-      (err, message) => {
-        if (err) {
-          res.status(500).send("server error");
-        } else {
+      (message) => {
           res.status(200).send(message);
           res.end();
         }
-      }
     );
   },
 
